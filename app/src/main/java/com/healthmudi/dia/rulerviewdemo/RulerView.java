@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.Scroller;
 
-import java.text.DecimalFormat;
 
 /**
  * <p>description:https://blog.csdn.net/qq_33453910/article/details/85266903</p>
@@ -32,17 +31,26 @@ public class RulerView extends View {
     private int screenWidth;
     private int baseWidth = 750;
 
-    private float indicatorHeight = 0;
-
-
+    private float indicatorHeight;
     private float rightBorder;
     private float leftBorder;
     private float lineDegreeSpace;
     private int lineCount = 16;
     private int shortDegreeLine;
     private int longDegreeLine;
-
     private int rulerHeight;
+    private int currentNum;
+    private float mXDown;
+    private float mLastMoveX;
+    private float mCurrentMoveX;
+
+    /**
+     * 监控手势速度类
+     */
+    private VelocityTracker mVelocityTracker;
+    //惯性最大最小速度
+    protected int mMaximumVelocity, mMinimumVelocity;
+
 
     public RulerView(Context context) {
         this(context, null);
@@ -68,13 +76,13 @@ public class RulerView extends View {
 
         indicatorPaint = new Paint();
         indicatorPaint.setAntiAlias(true);
-        indicatorPaint.setStrokeWidth(screenWidth * 1 / baseWidth);
+        indicatorPaint.setStrokeWidth(screenWidth * 1f / baseWidth);
         indicatorPaint.setStyle(Paint.Style.FILL);
         indicatorPaint.setColor(Color.parseColor("#ffff6253"));
 
         degreeLinePaint = new Paint();
         degreeLinePaint.setAntiAlias(true);
-        degreeLinePaint.setStrokeWidth(screenWidth * 4 / baseWidth);
+        degreeLinePaint.setStrokeWidth(screenWidth * 4f / baseWidth);
         degreeLinePaint.setStyle(Paint.Style.FILL);
         shortLineDegreeColor = Color.parseColor("#ffE8E8E8");
         longLineDegreeColor = Color.parseColor("#ff9F9F9F");
@@ -82,13 +90,13 @@ public class RulerView extends View {
 
         degreeTextPaint = new Paint();
         degreeTextPaint.setAntiAlias(true);
-        degreeTextPaint.setTextSize(screenWidth * 24 / 750);
+        degreeTextPaint.setTextSize(screenWidth * 24f / 750);
         degreeTextPaint.setColor(Color.parseColor("#ff9F9F9F"));
         degreeTextPaint.setFakeBoldText(true);
 
         textPaint = new Paint();
         textPaint.setAntiAlias(true);
-        textPaint.setTextSize(screenWidth * 36 / 750);
+        textPaint.setTextSize(screenWidth * 36f / 750);
         textPaint.setColor(Color.parseColor("#ffFF6253"));
         textPaint.setFakeBoldText(true);
 
@@ -173,17 +181,6 @@ public class RulerView extends View {
                 textPaint);
     }
 
-    private int currentNum;
-    private float mXDown;
-    private float mLastMoveX;
-    private float mCurrentMoveX;
-
-    /**
-     * 监控手势速度类
-     */
-    private VelocityTracker mVelocityTracker;
-    //惯性最大最小速度
-    protected int mMaximumVelocity, mMinimumVelocity;
     /**
      * 用于滑动实例
      *
@@ -266,7 +263,6 @@ public class RulerView extends View {
 
     }
 
-    //重写滑动方法，设置到边界的时候不滑,并显示边缘效果。滑动完输出刻度。
     @Override
     public void scrollTo(int x, int y) {
         //左边界检测

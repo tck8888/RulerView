@@ -57,6 +57,11 @@ public class RulerLayout extends FrameLayout {
         addView(rulerView, layoutParams);
     }
 
+    /**
+     * 获取刻度
+     *
+     * @return
+     */
     public int getScale() {
         if (rulerView != null) {
             return rulerView.getCurrentNum();
