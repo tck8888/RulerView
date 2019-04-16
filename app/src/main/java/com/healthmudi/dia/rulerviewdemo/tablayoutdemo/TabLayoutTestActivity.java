@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -36,6 +37,7 @@ public class TabLayoutTestActivity extends AppCompatActivity {
 
     private String text1 = "作品 123456";
     private String text2 = "喜欢 123456";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,8 +50,8 @@ public class TabLayoutTestActivity extends AppCompatActivity {
         rbWorks.setText(text1);
         rbLike.setText(text2);
         rgTabLayout.check(R.id.rb_works);
-        rbWorks.setText(getColorStr(text1, 2,text2.length() , "#FF6152"));
-        rbLike.setText(getColorStr(text2, 2,text2.length() , "#D9D9D9"));
+        rbWorks.setText(getColorStr(text1, 2, text2.length(), "#FF6152"));
+        rbLike.setText(getColorStr(text2, 2, text2.length(), "#D9D9D9"));
         mCentreViewPageEntities.add(new ViewPageEntity("", TestFragment.newInstance()));
         mCentreViewPageEntities.add(new ViewPageEntity("", TestFragment.newInstance()));
 
@@ -60,13 +62,13 @@ public class TabLayoutTestActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.rb_like) {
-                    viewPage.setCurrentItem(1,true);
-                    rbWorks.setText(getColorStr(text1, 2,text1.length() , "#D9D9D9"));
-                    rbLike.setText(getColorStr(text2, 2,text1.length() , "#FF6152"));
+                    viewPage.setCurrentItem(1, true);
+                    rbWorks.setText(getColorStr(text1, 2, text1.length(), "#D9D9D9"));
+                    rbLike.setText(getColorStr(text2, 2, text1.length(), "#FF6152"));
                 } else {
-                    viewPage.setCurrentItem(0,true);
-                    rbWorks.setText(getColorStr(text1, 2,text2.length() , "#FF6152"));
-                    rbLike.setText(getColorStr(text2, 2,text2.length() , "#D9D9D9"));
+                    viewPage.setCurrentItem(0, true);
+                    rbWorks.setText(getColorStr(text1, 2, text2.length(), "#FF6152"));
+                    rbLike.setText(getColorStr(text2, 2, text2.length(), "#D9D9D9"));
                 }
             }
         });
@@ -97,6 +99,8 @@ public class TabLayoutTestActivity extends AppCompatActivity {
         SpannableString spannableString = new SpannableString(str);
         ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.parseColor(targetColor));
         spannableString.setSpan(colorSpan, start, end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        RelativeSizeSpan sizeSpan01 = new RelativeSizeSpan(17f / 16f);
+        spannableString.setSpan(sizeSpan01, start, end, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
         return spannableString;
     }
