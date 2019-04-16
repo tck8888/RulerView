@@ -70,8 +70,8 @@ public class RulerView extends View {
         shortDegreeLine = screenWidth * 18 / baseWidth;
         longDegreeLine = screenWidth * 36 / baseWidth;
         lineDegreeSpace = screenWidth * 54f / baseWidth;
-        leftBorder=screenWidth * 20f / baseWidth;
-        rightBorder = lineDegreeSpace * lineCount * 2+leftBorder;
+        leftBorder = screenWidth * 20f / baseWidth;
+        rightBorder = lineDegreeSpace * lineCount * 2 + leftBorder ;
 
 
         indicatorPaint = new Paint();
@@ -170,7 +170,7 @@ public class RulerView extends View {
                 indicatorPaint);
         //画当前刻度值
         Log.d(TAG, "onDraw: " + (greenPointX + getScrollX() - leftBorder) / lineDegreeSpace);
-        int ceil = (int) Math.ceil((greenPointX + getScrollX() - leftBorder) / lineDegreeSpace);
+        int ceil = Math.round((greenPointX + getScrollX() - leftBorder) / lineDegreeSpace);
 
         currentNum = 40 + (ceil * 5);
         float textWidth = textPaint.measureText(currentNum + "cm");
@@ -223,8 +223,8 @@ public class RulerView extends View {
                     mVelocityTracker = null;
                 }
                 break;
-                default:
-                    break;
+            default:
+                break;
         }
         return true;
     }
@@ -232,7 +232,7 @@ public class RulerView extends View {
     private void moveRecently() {
         float distance = (greenPointX + getScrollX() - leftBorder) % lineDegreeSpace;
         //指针的位置在小刻度中间位置往后（右）
-        if (distance >= lineDegreeSpace / 2) {
+        if (distance >= lineDegreeSpace / 2f) {
             scrollBy((int) (lineDegreeSpace - distance), 0);
         } else {
             scrollBy((int) (-distance), 0);
@@ -271,7 +271,7 @@ public class RulerView extends View {
         }
         //有边界检测
         if (x + getWidth() / 2 > rightBorder) {
-            x = (int) (rightBorder - getWidth() / 2f);
+            x = (int) (rightBorder - getWidth() / 2f );
         }
         if (x != getScrollX()) {
 
