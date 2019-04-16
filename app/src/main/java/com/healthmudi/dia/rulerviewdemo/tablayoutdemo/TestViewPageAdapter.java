@@ -1,8 +1,10 @@
 package com.healthmudi.dia.rulerviewdemo.tablayoutdemo;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
 
 import java.util.List;
 
@@ -36,4 +38,10 @@ public class TestViewPageAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         return mCentreViewPageEntities.get(position).fragment;
     }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return PagerAdapter.POSITION_NONE;
+    }
+
 }

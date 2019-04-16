@@ -11,40 +11,8 @@
         android:layout_height="50dp"
         android:src="@android:drawable/ic_menu_revert" />
 
-    <RadioGroup
-        android:id="@+id/rg_tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rb_works"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:button="@null"
-            android:drawableBottom="@drawable/indicator"
-            android:drawablePadding="6dp"
-            android:textColor="@color/color_unselected_9f9f9f_select_2c2c2c"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <RadioButton
-            android:id="@+id/rb_like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:button="@null"
-            android:drawableBottom="@drawable/indicator"
-            android:drawablePadding="6dp"
-            android:textColor="@color/color_unselected_9f9f9f_select_2c2c2c"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-    </RadioGroup>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/view_page"
+    <com.healthmudi.dia.rulerviewdemo.tablayoutdemo.MyTabLayoutWidget
+        android:id="@+id/tab_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
