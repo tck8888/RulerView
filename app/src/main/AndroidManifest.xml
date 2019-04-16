@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".tablayoutdemo.TabLayoutTestActivity" />
+        <activity android:name=".scrolltoorbydemo.ScrollToOrByDemoActivity" />
     </application>
 
 </manifest>

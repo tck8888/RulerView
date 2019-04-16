@@ -10,6 +10,8 @@ import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
@@ -27,7 +29,6 @@ import java.util.List;
  */
 public class TabLayoutTestActivity extends AppCompatActivity {
 
-
     private RadioGroup rgTabLayout;
     private RadioButton rbWorks;
     private RadioButton rbLike;
@@ -42,6 +43,14 @@ public class TabLayoutTestActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tab_layout_test_activity);
+
+
+        findViewById(R.id.ib_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         rgTabLayout = (RadioGroup) findViewById(R.id.rg_tab_layout);
         rbWorks = (RadioButton) findViewById(R.id.rb_works);

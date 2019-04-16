@@ -1,4 +1,4 @@
-package com.healthmudi.dia.rulerviewdemo;
+package com.healthmudi.dia.rulerviewdemo.scrolltoorbydemo;
 
 
 import android.content.Context;
@@ -15,6 +15,8 @@ import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.widget.Scroller;
+
+import com.healthmudi.dia.rulerviewdemo.R;
 
 import java.text.DecimalFormat;
 

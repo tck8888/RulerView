@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/ib_back"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@android:drawable/ic_menu_revert" />
 
     <RadioGroup
         android:id="@+id/rg_tab_layout"
@@ -14,7 +19,6 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:textStyle="bold"
             android:id="@+id/rb_works"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,19 +26,20 @@
             android:drawableBottom="@drawable/indicator"
             android:drawablePadding="6dp"
             android:textColor="@color/color_unselected_9f9f9f_select_2c2c2c"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <RadioButton
-            android:textStyle="bold"
-            android:layout_marginStart="24dp"
-            android:textColor="@color/color_unselected_9f9f9f_select_2c2c2c"
             android:id="@+id/rb_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
             android:button="@null"
             android:drawableBottom="@drawable/indicator"
             android:drawablePadding="6dp"
-            android:textSize="16sp" />
+            android:textColor="@color/color_unselected_9f9f9f_select_2c2c2c"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </RadioGroup>
 

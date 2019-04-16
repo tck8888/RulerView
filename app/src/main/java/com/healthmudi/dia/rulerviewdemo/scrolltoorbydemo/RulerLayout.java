@@ -1,4 +1,4 @@
-package com.healthmudi.dia.rulerviewdemo;
+package com.healthmudi.dia.rulerviewdemo.scrolltoorbydemo;
 
 import android.content.Context;
 import android.graphics.Color;
