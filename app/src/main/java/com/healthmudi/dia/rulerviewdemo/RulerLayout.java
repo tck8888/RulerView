@@ -7,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 /**
  * <p>description:</p>
@@ -21,6 +20,7 @@ public class RulerLayout extends FrameLayout {
     private Context context;
     private int screenWidth;
     private int radius;
+    private RulerView rulerView;
 
     public RulerLayout(Context context) {
         this(context, null);
@@ -40,7 +40,7 @@ public class RulerLayout extends FrameLayout {
         View view = new View(context);
         GradientDrawable gradientDrawable = new GradientDrawable();
         gradientDrawable.setCornerRadius(radius);
-        gradientDrawable.setStroke(screenWidth * 2 / 750, Color.parseColor("#fff4f4f4"));
+        gradientDrawable.setStroke(screenWidth * 3 / 750, Color.parseColor("#fff4f4f4"));
         view.setBackground(gradientDrawable);
         LayoutParams layoutParams = new LayoutParams(-1, radius * 2);
         layoutParams.topMargin = screenWidth * 12 / 750;
@@ -50,10 +50,17 @@ public class RulerLayout extends FrameLayout {
     }
 
     private void addRulerView() {
-        RulerView rulerView = new RulerView(context);
+        rulerView = new RulerView(context);
         LayoutParams layoutParams = new LayoutParams(-1, -2);
         layoutParams.leftMargin = radius;
         layoutParams.rightMargin = radius;
         addView(rulerView, layoutParams);
+    }
+
+    public int getScale() {
+        if (rulerView != null) {
+            return rulerView.getCurrentNum();
+        }
+        return 0;
     }
 }

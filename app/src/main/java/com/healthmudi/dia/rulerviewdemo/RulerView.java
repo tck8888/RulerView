@@ -24,7 +24,6 @@ import java.text.DecimalFormat;
  */
 public class RulerView extends View {
     String TAG = "RulerView";
-    private Paint bgPaint;
     private Paint indicatorPaint;
     private Paint degreeLinePaint;
     private Paint degreeTextPaint;
@@ -58,20 +57,14 @@ public class RulerView extends View {
         screenWidth = getResources().getDisplayMetrics().widthPixels;
 
         indicatorHeight = screenWidth * 128f / baseWidth;
-
         rulerHeight = screenWidth * (128 + 27 + 42) / baseWidth;
 
         shortDegreeLine = screenWidth * 18 / baseWidth;
         longDegreeLine = screenWidth * 36 / baseWidth;
         lineDegreeSpace = screenWidth * 54f / baseWidth;
+        leftBorder=screenWidth * 20f / baseWidth;
+        rightBorder = lineDegreeSpace * lineCount * 2+leftBorder;
 
-        rightBorder = lineDegreeSpace * lineCount * 2;
-
-        bgPaint = new Paint();
-        bgPaint.setAntiAlias(true);
-        bgPaint.setStrokeWidth(screenWidth * 4 / baseWidth);
-        bgPaint.setStyle(Paint.Style.STROKE);
-        bgPaint.setColor(Color.parseColor("#fff4f4f4"));
 
         indicatorPaint = new Paint();
         indicatorPaint.setAntiAlias(true);
@@ -292,4 +285,7 @@ public class RulerView extends View {
     }
 
 
+    public int getCurrentNum() {
+        return currentNum;
+    }
 }
