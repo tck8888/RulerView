@@ -31,9 +31,10 @@ public class RulerView extends View {
 
     private int rightBorder;
     private int lineDegreeSpace;
-    private int lineCount;
+    private int lineCount = 16;
     private int shortDegreeLine;
     private int longDegreeLine;
+    private int bottomDistance;
 
     public RulerView(Context context) {
         this(context, null);
@@ -51,11 +52,12 @@ public class RulerView extends View {
         indicatorHeight = screenWidth * 128 / baseWidth;
         bgHeight = screenWidth * 108 / baseWidth;
         bgRadius = bgHeight / 2;
+        bottomDistance = screenWidth * 18 / baseWidth;
 
 
-        shortDegreeLine = screenWidth * 16 / baseWidth;
-        longDegreeLine = screenWidth * 40 / baseWidth;
-        lineDegreeSpace = screenWidth * 16 / baseWidth;
+        shortDegreeLine = screenWidth * 18 / baseWidth;
+        longDegreeLine = screenWidth * 36 / baseWidth;
+        lineDegreeSpace = screenWidth * 26 / baseWidth;
         rightBorder = lineDegreeSpace * lineCount * 2;
 
         bgPaint = new Paint();
@@ -68,16 +70,14 @@ public class RulerView extends View {
         indicatorPaint.setAntiAlias(true);
         indicatorPaint.setStrokeWidth(screenWidth * 1 / baseWidth);
         indicatorPaint.setStyle(Paint.Style.FILL);
-        indicatorPaint.setTextAlign(Paint.Align.CENTER);
         indicatorPaint.setColor(Color.parseColor("#ffff6253"));
 
         degreeLinePaint = new Paint();
         degreeLinePaint.setAntiAlias(true);
         degreeLinePaint.setStrokeWidth(screenWidth * 4 / baseWidth);
         degreeLinePaint.setStyle(Paint.Style.FILL);
-        degreeLinePaint.setTextAlign(Paint.Align.CENTER);
-        shortLineDegreeColor = Color.parseColor("#fff4f4f4");
-        longLineDegreeColor = Color.parseColor("#ff9f9f9f");
+        shortLineDegreeColor = Color.parseColor("#ffE8E8E8");
+        longLineDegreeColor = Color.parseColor("#ff9F9F9F");
         degreeLinePaint.setColor(shortLineDegreeColor);
     }
 
@@ -110,15 +110,17 @@ public class RulerView extends View {
                 indicatorWith / 2,
                 indicatorWith / 2,
                 indicatorPaint);
-        int x = 0;
+        int x = bgRadius;
+        int y = bgHeight ;
         for (int i = 0; i < lineCount * 2; i++) {
-            //画长刻度
             if (i % 2 == 0) {
                 degreeLinePaint.setColor(longLineDegreeColor);
-                canvas.drawLine(x, y, x, y + longDegreeLine, degreeLinePaint);
+                canvas.drawLine(x, y-longDegreeLine, x, y, degreeLinePaint);
+            } else {
+                degreeLinePaint.setColor(shortLineDegreeColor);
+                canvas.drawLine(x, y-shortDegreeLine, x, y, degreeLinePaint);
             }
-            x += lineDegreeSpace;
-
+            x += lineDegreeSpace * 2;
         }
     }
 }
