@@ -13,15 +13,30 @@
         android:layout_height="wrap_content"
         android:text="自定义tablayout" />
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <com.healthmudi.dia.rulerviewdemo.RulerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical" />
-    </FrameLayout>
+    <com.healthmudi.dia.rulerviewdemo.RulerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="18dp" />
+
+    <com.healthmudi.dia.rulerviewdemo.RulerLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="18dp" />
+
+    <com.healthmudi.dia.rulerviewdemo.RulerView2
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="18dp" />
 
 
 </LinearLayout>
