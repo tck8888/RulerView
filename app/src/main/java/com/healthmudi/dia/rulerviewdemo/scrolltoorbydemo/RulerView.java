@@ -69,9 +69,9 @@ public class RulerView extends View {
 
         shortDegreeLine = screenWidth * 18 / baseWidth;
         longDegreeLine = screenWidth * 36 / baseWidth;
-        lineDegreeSpace = screenWidth * 54f / baseWidth;
+        lineDegreeSpace = (screenWidth * 108f / baseWidth) / 10;
         leftBorder = screenWidth * 20f / baseWidth;
-        rightBorder = lineDegreeSpace * lineCount * 2 + leftBorder ;
+        rightBorder = lineDegreeSpace * lineCount * 10 + leftBorder;
 
 
         indicatorPaint = new Paint();
@@ -139,13 +139,13 @@ public class RulerView extends View {
         float indicatorRadius = screenWidth * 12f / baseWidth;
 
 
-        for (int i = 0; i <= lineCount * 2; i++) {
+        for (int i = 0; i <= lineCount * 10; i++) {
             //画长刻度
-            if (i % 2 == 0) {
+            if (i % 10 == 0) {
                 degreeLinePaint.setColor(longLineDegreeColor);
                 canvas.drawLine(x, y - longDegreeLine, x, y, degreeLinePaint);
                 //画刻度值
-                String number = String.valueOf(40 + (i / 2) * 10);
+                String number = String.valueOf(40 + i);
                 float textWidth = degreeTextPaint.measureText(number);
                 canvas.drawText(
                         number,
@@ -153,7 +153,7 @@ public class RulerView extends View {
                         y - longDegreeLine - screenWidth * 10f / 750,
                         degreeTextPaint
                 );
-            } else {
+            } else if (i % 5 == 0) {
                 degreeLinePaint.setColor(shortLineDegreeColor);
                 canvas.drawLine(x, y - shortDegreeLine, x, y, degreeLinePaint);
             }
@@ -172,7 +172,7 @@ public class RulerView extends View {
         Log.d(TAG, "onDraw: " + (greenPointX + getScrollX() - leftBorder) / lineDegreeSpace);
         int ceil = Math.round((greenPointX + getScrollX() - leftBorder) / lineDegreeSpace);
 
-        currentNum = 40 + (ceil * 5);
+        currentNum = 40 + ceil;
         float textWidth = textPaint.measureText(currentNum + "cm");
         canvas.drawText(
                 currentNum + "cm",
@@ -271,7 +271,7 @@ public class RulerView extends View {
         }
         //有边界检测
         if (x + getWidth() / 2 > rightBorder) {
-            x = (int) (rightBorder - getWidth() / 2f );
+            x = (int) (rightBorder - getWidth() / 2f);
         }
         if (x != getScrollX()) {
 
