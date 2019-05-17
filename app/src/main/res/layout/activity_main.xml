@@ -21,4 +21,12 @@
         android:layout_marginTop="10dp"
         android:text="自定义卷尺引发的对scrollTo scrollBy理解"
         android:textAllCaps="false" />
+
+    <Button
+        android:id="@+id/btn_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="特殊的流失布局"
+        android:textAllCaps="false" />
 </LinearLayout>

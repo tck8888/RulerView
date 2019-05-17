@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".tablayoutdemo.TabLayoutTestActivity" />
         <activity android:name=".scrolltoorbydemo.ScrollToOrByDemoActivity" />
+        <activity android:name=".flowlayout.FlowLayoutActivity" />
     </application>
 
 </manifest>

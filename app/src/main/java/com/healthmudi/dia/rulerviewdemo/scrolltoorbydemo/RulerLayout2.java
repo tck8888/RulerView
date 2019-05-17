@@ -1,14 +1,11 @@
 package com.healthmudi.dia.rulerviewdemo.scrolltoorbydemo;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
+
+import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.healthmudi.dia.rulerviewdemo.R;

@@ -1,6 +1,6 @@
 package com.healthmudi.dia.rulerviewdemo.tablayoutdemo;
 
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 
 /**
  * <p>description:</p>
